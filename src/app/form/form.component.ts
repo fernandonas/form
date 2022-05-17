@@ -9,7 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormComponent implements OnInit {
   validateForm!: FormGroup;
 
-  constructor(private formbuilder: FormBuilder) { }
+  constructor(
+    private readonly formbuilder: FormBuilder
+  ) { }
 
   submitForm(): void {
     console.log('submit', this.validateForm.value);
@@ -19,7 +21,8 @@ export class FormComponent implements OnInit {
     this.validateForm = this.formbuilder.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      remember: [true]
+      remember: [true],
+      steps: [[], [Validators.required]]
     });
   }
 }
